@@ -21,9 +21,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+            
+            @if(auth()->user()->role == 'admin')
             <div class="d-flex justify-content-end mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal"><i class="fa fa-plus"></i> Produk Baru</button>
             </div>
+            @endif
             {{-- modal --}}
             <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -64,7 +67,9 @@
                         <th scope="col">Kode Produk</th>
                         <th scope="col">Harga</th>
                         <th scope="col">Stok</th>
-                        <th scope="col">*Set</th>
+                        @if(auth()->user()->role == 'admin')
+                            <th scope="col">*Set</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -75,10 +80,12 @@
                             <td>{{ $item->kode_produk }}</td>
                             <td>Rp. {{ number_format($item->harga) }}</td>
                             <td>{{ $item->stok }}</td>
+                            @if(auth()->user()->role == 'admin')
                             <td>
                                 <a class="btn btn-success btn-sm" href="/edit-produk={{ $item->id }}"><i class="fa fa-edit"></i> Edit</a>
                                 <a class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus item ini?')" href="/hapus-produk/{{ $item->id }}"><i class="fa fa-trash"></i> Hapus</a>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
