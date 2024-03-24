@@ -6,6 +6,7 @@
         <div class="bg-light rounded h-100 p-4">
             <h6 class="mb-4">Edit Produk</h6>
             <form action="/edit-produk/{{ $produk->id }}" method="POST">
+                @method('put')
                 @csrf
                 <div class="mb-3">
                     <label for="y" class="form-label">Kode Produk</label>

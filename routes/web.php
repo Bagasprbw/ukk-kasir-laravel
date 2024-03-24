@@ -40,14 +40,14 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'onlyAdmin'])->group(function(){
     Route::post('/tambah-produk', [ProdukController::class, 'insert']);
     Route::get('/edit-produk={produk:id}', [ProdukController::class, 'edit']);
-    Route::post('/edit-produk/{produk:id}', [ProdukController::class, 'update']);
+    Route::put('/edit-produk/{produk:id}', [ProdukController::class, 'update']);
     Route::get('/hapus-produk/{produk:id}', [ProdukController::class, 'delete']);
 
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/tambah-user', [UserController::class, 'tambah']);
     Route::post('/tambah-user', [UserController::class, 'insert']);
     Route::get('/edit-user={user:id}', [UserController::class, 'edit']);
-    Route::post('/edit-user/{user:id}', [UserController::class, 'update']);
+    Route::put('/edit-user/{user:id}', [UserController::class, 'update']);
     Route::get('/hapus-user/{user:id}', [UserController::class, 'delete']);
 });
 Route::middleware(['auth', 'onlyKasir'])->group(function(){
