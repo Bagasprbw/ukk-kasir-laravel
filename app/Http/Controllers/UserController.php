@@ -28,7 +28,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect('/kasir')->with('msg', 'User(Kasir) Berhasil ditambahkan');
+        return redirect('/user')->with('msg', 'User(Kasir) Berhasil ditambahkan');
     }
 
     public function edit(User $user){

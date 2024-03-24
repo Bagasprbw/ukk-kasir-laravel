@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PelangganController;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
@@ -50,5 +51,10 @@ Route::middleware(['auth', 'onlyAdmin'])->group(function(){
     Route::get('/hapus-user/{user:id}', [UserController::class, 'delete']);
 });
 Route::middleware(['auth', 'onlyKasir'])->group(function(){
-    //
+    Route::get('/pelanggan', [PelangganController::class, 'index']);
+    Route::get('/tambah-pelanggan', [PelangganController::class, 'tambah']);
+    Route::post('/tambah-pelanggan', [PelangganController::class, 'insert']);
+    Route::get('/edit-pelanggan={pelanggan:id}', [PelangganController::class, 'edit']);
+    Route::put('/edit-pelanggan/{pelanggan:id}', [PelangganController::class, 'update']);
+    Route::get('/hapus-pelanggan/{pelanggan:id}', [PelangganController::class, 'delete']);
 });
