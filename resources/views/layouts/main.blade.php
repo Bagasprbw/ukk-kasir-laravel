@@ -54,7 +54,7 @@
                     <a href="/produk" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Produk</a>
                     @if(auth()->user()->role == 'admin')
                         <a href="/user" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>User</a>
-                        <a href="" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Laporan Penjualan</a>
+                        <a href="/laporan" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Laporan Penjualan</a>
                     @elseif(auth()->user()->role == 'kasir')
                         <a href="/pelanggan" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Pelanggan</a>
                         <a href="/penjualan" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Penjualan</a>

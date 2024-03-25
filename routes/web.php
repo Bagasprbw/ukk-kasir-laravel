@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenjualanController;
 use App\Models\Produk;
@@ -50,6 +51,10 @@ Route::middleware(['auth', 'onlyAdmin'])->group(function(){
     Route::get('/edit-user={user:id}', [UserController::class, 'edit']);
     Route::put('/edit-user/{user:id}', [UserController::class, 'update']);
     Route::get('/hapus-user/{user:id}', [UserController::class, 'delete']);
+
+    Route::get('/laporan', [LaporanController::class, 'index']);
+    Route::post('/cari', [LaporanController::class, 'search']);
+    Route::get('/detail={penjualan:kode_penjualan}', [LaporanController::class, 'show']);
 });
 Route::middleware(['auth', 'onlyKasir'])->group(function(){
     Route::get('/pelanggan', [PelangganController::class, 'index']);
