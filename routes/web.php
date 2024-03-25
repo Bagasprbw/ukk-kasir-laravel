@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PenjualanController;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
@@ -57,4 +58,14 @@ Route::middleware(['auth', 'onlyKasir'])->group(function(){
     Route::get('/edit-pelanggan={pelanggan:id}', [PelangganController::class, 'edit']);
     Route::put('/edit-pelanggan/{pelanggan:id}', [PelangganController::class, 'update']);
     Route::get('/hapus-pelanggan/{pelanggan:id}', [PelangganController::class, 'delete']);
+
+    Route::get('/penjualan', [PenjualanController::class, 'index']);
+    Route::post('/pilih-pelanggan', [PenjualanController::class, 'mulai']);
+    Route::get('proses-penjualan={kode_penjualan}', [PenjualanController::class, 'proses'])->name('proses.penjualan');
+    Route::post('/pilih-produk', [PenjualanController::class, 'store']);
+    Route::get('/hapus-produk={detailPenjualan:id}', [PenjualanController::class, 'delete']);
+    Route::post('/bayar/{penjualan:kode_penjualan}', [PenjualanController::class, 'bayar']);
+    Route::get('/nota-penjualan/{penjualan:kode_penjualan}', [PenjualanController::class, 'nota']);
+
+    Route::get('/hapus-penjualan/{penjualan:kode_penjualan}', [PenjualanController::class, 'deletePenjualan']);
 });

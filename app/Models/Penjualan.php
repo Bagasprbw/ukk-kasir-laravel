@@ -16,13 +16,16 @@ class Penjualan extends Model
     public function pelanggan(){
         return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
     }
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public static function boot(){
         parent::boot();
-        self::creating(function($transaksi){
-            $latestKdTransaksi = self::latest('kode_transaksi')->firstOrNew([]);
-            $currentNumber = (int) substr($latestKdTransaksi->kode_transaksi, 2);
-            $transaksi->kode_transaksi = 'TR-' . str_pad(++$currentNumber, 4, '0', STR_PAD_LEFT);
+        self::creating(function($penjualan){
+            $latestKdPenjualan = self::latest('kode_penjualan')->firstOrNew([]);
+            $currentNumber = (int) substr($latestKdPenjualan->kode_penjualan, 2);
+            $penjualan->kode_penjualan = 'TR' . str_pad(++$currentNumber, 4, '0', STR_PAD_LEFT);
         });
     }
 }

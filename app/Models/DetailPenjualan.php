@@ -10,10 +10,10 @@ class DetailPenjualan extends Model
     use HasFactory;
 
     public function penjualan(){
-        return $this->belongsTo(detailPenjualan::class, 'kode_penjualan');
+        return $this->belongsTo(Penjualan::class, 'kode_penjualan');
     }
     public function produk(){
-        return $this->belongsTo(detailPenjualan::class, 'produk_id');
+        return $this->belongsTo(Produk::class, 'produk_id');
     }
 
     protected $guarded = ['id'];
