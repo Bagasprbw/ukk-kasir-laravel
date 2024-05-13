@@ -51,13 +51,13 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="/home" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
-                    <a href="/produk" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Produk</a>
+                    <a href="/produk" class="nav-item nav-link"><i class="fa fa-sort me-2"></i>Produk</a>
                     @if(auth()->user()->role == 'admin')
-                        <a href="/user" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>User</a>
-                        <a href="/laporan" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Laporan Penjualan</a>
+                        <a href="/user" class="nav-item nav-link"><i class="fa fa-user-circle me-2"></i>User</a>
+                        <a href="/laporan" class="nav-item nav-link"><i class="fa fa-sticky-note me-2"></i>Laporan Penjualan</a>
                     @elseif(auth()->user()->role == 'kasir')
-                        <a href="/pelanggan" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Pelanggan</a>
-                        <a href="/penjualan" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Penjualan</a>
+                        <a href="/pelanggan" class="nav-item nav-link"><i class="fa fa-male me-2"></i>Pelanggan</a>
+                        <a href="/penjualan" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i>Penjualan</a>
                     @endif
                 </div>
             </nav>
