@@ -79,7 +79,15 @@
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->kode_produk }}</td>
                             <td>Rp. {{ number_format($item->harga) }}</td>
-                            <td>{{ $item->stok }}</td>
+                            <td>
+                                @if($item->stok <= 5 && $item->stok > 0)
+                                    {{ $item->stok }} 
+                                    <span class="text-sm text-danger"> *</span><i>Stok Menipis</i> 
+                                @elseif($item->stok == 0)
+                                    <span class="text-sm text-danger"> *</span><i>Stok Habis</i> 
+                                @else {{ $item->stok }}
+                                @endif
+                            </td>
                             @if(auth()->user()->role == 'admin')
                             <td>
                                 <a class="btn btn-success btn-sm" href="/edit-produk={{ $item->id }}"><i class="fa fa-edit"></i> Edit</a>
